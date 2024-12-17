@@ -1,0 +1,180 @@
+.header {
+    height: 64px;
+    width: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 0 1rem;
+    border-bottom: solid 1px #999999ac;
+
+    .header-headline {
+        display: flex;
+
+        .headline-hum {
+            width: max-content;
+            height: 64px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            flex-direction: column;
+            gap: 5px;
+
+            .line {
+                display: block;
+                width: 20px;
+                height: 2px;
+                border-radius: 5px;
+                background-color: #000;
+            }
+        }
+        .headline-text {
+            font-weight: 700;
+            font-size: 1.2rem;
+            height: 64px;
+            line-height: 64px;
+            margin-left: 1rem;
+        }
+    }
+    .header-nav {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        list-style: none;
+        gap: 10px;
+
+        .header-navlist {
+            .search-box {
+                height: 40px;
+                border-radius: 25px;
+                border: 1px solid #999999ac;
+                padding: 3px 1rem;
+                display: flex;
+                align-items: center;
+                justify-content: left;
+                gap: 8px;
+                width: 300px;
+
+                label {
+                    height: 18px;
+
+                    svg {
+                        width: 18px;
+                        height: 18px;
+
+                        circle,
+                        path {
+                            stroke: #888;
+                            stroke: #888;
+                        }
+                    }
+                }
+                .search-input {
+                    height: 18px;
+                    border: 0;
+                    outline: 0;
+
+                    &:focus {
+                        border: 0;
+                        outline: 0;
+                    }
+                }
+            }
+
+            svg {
+                width: 20px;
+                height: 20px;
+
+                circle,
+                path {
+                    stroke: #888;
+                    stroke: #888;
+                }
+            }
+        }
+    }
+}
+
+.section {
+
+    .section-tit {
+        margin: 1rem 0;
+    }
+}
+
+.top-news {
+    text-align: center;
+
+    // .news-tit {}
+    .news-card-list {
+        width: 90%;
+        margin: 0 auto;
+
+        .news-card {
+            display: inline-block;
+            width: 400px;
+            border-radius: 1rem;
+            border: 1px solid #dfdfdfac;
+            overflow: hidden;
+            margin: 1rem;
+    
+            .card-thumb {
+                width: 100%;
+                height: 150px;
+    
+                img {
+                    width: 100%;
+                    height: auto;
+                    object-fit: cover;
+                }
+            }
+            .card-text {
+                padding: 1rem;
+                text-align: left;
+                display: flex;
+                flex-direction: column;
+                justify-content: start;
+                text-decoration: none;
+                display: block;
+
+                &:hover {
+                    text-decoration: underline;
+                }
+    
+                .card-headline {
+                    font-size: 1.1rem;
+                    font-weight: 600;
+                    color: #222;
+                }
+                .card-desc {
+                    padding-top: 0.5rem;
+                    font-size: .8rem;
+                    color: #555;
+                }
+            }
+    
+            .card-footer {
+                display: flex;
+                justify-content: space-between;
+                padding: 1rem;
+    
+                .card-timeline,
+                .card-views {
+                    display: block;
+                    text-align: center;
+                    font-size: .7rem;
+                    color: #999999ac;
+                }
+    
+                svg {
+                    width: .7rem;
+                    height: .7rem;
+    
+                    path {
+                        stroke: #999999ac;
+                    }
+                }
+                .text {}
+            }
+        }
+    }
+}
