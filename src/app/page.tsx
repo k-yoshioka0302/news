@@ -5,12 +5,7 @@ import { Bell, User, Search, Eye } from 'lucide-react';
 import './styles.scss';
 
 //NewsCard コンポーネント
-const NewsCard = ({
-    title,
-    uploadedAt,
-    thumbnail,
-    url,
-}: AnimeNewsData) => {
+const NewsCard = ({ title, uploadedAt, thumbnail, url }: AnimeNewsData) => {
     return (
         <div className="news-card">
             <div className="card-thumb">
@@ -86,12 +81,33 @@ export default async function Home() {
                         <li className="list-item">声優</li>
                     </ul>
                 </div>
-                
+
                 <div className="display">
+                    <section className="big-news">
+                        <div className="big-news-card">
+                        <div className="big-news-wrapper">
+                            <img
+                                src="./sample.png"
+                                alt=""
+                                className="big-news-img"
+                            />
+                            
+                                <div className="big-news-explan">
+                                    <h1 className="big-news-explan-title">
+                                        注目のアニメ
+                                    </h1>
+                                    <p>
+                                        だいきに関する論文が発表され、世論が変化しています。新たな論文が登場したことで、以前の論文は影を潜めつつあります。
+                                    </p>
+                                </div>
+                            </div>
+                        </div>
+                    </section>
+
                     <section className="top-news section">
-                        <h1 className="news-tit section-tit">
+                        <h2 className="news-tit section-tit">
                             今日のトップニュース
-                        </h1>
+                        </h2>
                         <div className="news-card-list">
                             {dummyData.map((data, index) => (
                                 <NewsCard
