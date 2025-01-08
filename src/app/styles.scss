@@ -6,6 +6,7 @@
     border-bottom: solid 1px #e0e0e0;
     background: #fff;
     box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+
     .header-headline {
         display: flex;
         justify-content: space-between;
@@ -40,7 +41,8 @@
         align-items: center;
         justify-content: center;
         list-style: none;
-        gap: 48px;
+        gap: 1rem;
+        padding-right: 1rem;
 
         .header-navlist {
             .search-box {
@@ -145,8 +147,6 @@
                     width: 54%;
                 }
             }
-            
-
         }
     }
 }
