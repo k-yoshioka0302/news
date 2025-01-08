@@ -1,9 +1,9 @@
-import type { NextConfig } from "next";
+import type { NextConfig } from 'next';
 
 const nextConfig: NextConfig = {
-  images : {
-    domains : ['www.animenewsnetwork.com']
-  }
+    images: {
+        domains: ['www.animenewsnetwork.com']
+    }
 };
 
 export default nextConfig;

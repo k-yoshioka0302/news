@@ -1,8 +1,54 @@
+'use client';
+import React from 'react';
 import { AnimeNewsData } from '../../types/animeNewsData';
-
 import Image from 'next/image';
-import { Bell, User, Search, Eye } from 'lucide-react';
+import { Bell, User, Search } from 'lucide-react';
 import './styles.scss';
+import { motion } from 'framer-motion';
+import { useState, useEffect } from 'react';
+
+//スクロールバー機能ロジック
+const Sidebar = () => {
+    const [activeIndex, setActiveIndex] = useState<number | null>(null);
+
+    useEffect(() => {
+        console.log(`Active index updated: ${activeIndex}`);
+    }, [activeIndex]);
+
+    const navItems = [
+        'TRENDING',
+        'LATEST NEWS',
+        'TV ANIME',
+        'MANGA',
+        'MOVIE',
+        'VOICE ACTOR',
+        'VTuber',
+        'その他2',
+        'その他3'
+    ];
+
+    return (
+        <div className="sidebar-list">
+            {navItems.map((item, index) => (
+                <motion.a
+                    key={index}
+                    href="#"
+                    className={`list-item nav-item ${
+                        activeIndex === index ? 'active' : ''
+                    }`}
+                    onClick={(e) => {
+                        e.preventDefault();
+                        setActiveIndex(index); // クリックされた項目のインデックスを設定
+                    }}
+                    whileTap={{ scale: 0.95 }}
+                    // whileHover={{ scale: 1.05 }}
+                >
+                    {item}
+                </motion.a>
+            ))}
+        </div>
+    );
+};
 
 //NewsCard コンポーネント
 const NewsCard = ({ title, uploadedAt, thumbnail, url }: AnimeNewsData) => {
@@ -18,105 +64,84 @@ const NewsCard = ({ title, uploadedAt, thumbnail, url }: AnimeNewsData) => {
             </div>
             <a className="card-text" href={url}>
                 <h2 className="card-headline">{title}</h2>
-                {/* <p className="card-desc">{preview.intro}</p> */}
             </a>
             <div className="card-footer">
                 <div className="card-timeline">{uploadedAt}</div>
-                {/* <div className="card-views">
-                    <Eye />
-                    <span className="text">{views}</span>
-                </div> */}
             </div>
         </div>
     );
 };
 
 //api叩いてる
-export default async function Home() {
-    const dummyData: AnimeNewsData[] = await fetch(
-        'https://anime-ashy-ten.vercel.app/news/ann/recent-feeds'
-    ).then((res) => res.json());
+export default function Home() {
+    const [dummyData, setDummyData] = useState<AnimeNewsData[]>([]); // データを管理
+
+    useEffect(() => {
+        const fetchData = async () => {
+            const response = await fetch(
+                'https://anime-ashy-ten.vercel.app/news/ann/recent-feeds'
+            );
+            const data: AnimeNewsData[] = await response.json();
+            setDummyData(data); // データを状態に設定
+        };
+
+        fetchData();
+    }, []); // コンポーネントのマウント時にデータを取得
 
     return (
         <>
             <header className="header">
                 <div className="header-headline">
-                    <div className="headline-hum">
-                        <span className="line"></span>
-                        <span className="line"></span>
-                        <span className="line"></span>
-                    </div>
                     <h1 className="headline-text">AnimeNews</h1>
-                </div>
-                <ul className="header-nav">
-                    <li className="header-navlist">
-                        <div className="search-box">
-                            <label htmlFor="search-input">
-                                <Search />
-                            </label>
-                            <input
-                                type="text"
-                                className="search-input"
-                                id="search-input"
-                                placeholder="ニュースを検索..."
-                            />
-                        </div>
-                    </li>
-                    <li className="header-navlist">
-                        <Bell />
-                    </li>
-                    <li className="header-navlist">
-                        <User />
-                    </li>
-                </ul>
-            </header>
-
-            <main>
-                <div className="sidevar">
-                    <ul className="sidevar-list">
-                        <li className="list-item">　トレンド</li>
-                        <li className="list-item">新着情報</li>
-                        <li className="list-item">TVアニメ</li>
-                        <li className="list-item">映画</li>
-                        <li className="list-item">声優</li>
+                    <ul className="header-nav">
+                        <li className="header-navlist">
+                            <div className="search-box">
+                                <label htmlFor="search-input">
+                                    <Search />
+                                </label>
+                                <input
+                                    type="text"
+                                    className="search-input"
+                                    id="search-input"
+                                    placeholder="ニュースを検索..."
+                                />
+                            </div>
+                        </li>
+                        <li className="header-navlist">
+                            <Bell />
+                        </li>
+                        <li className="header-navlist">
+                            <User />
+                        </li>
                     </ul>
                 </div>
 
-                <div className="display">
-                    <section className="big-news">
-                        <div className="big-news-card">
-                        <div className="big-news-wrapper">
-                            <img
-                                src="./sample.png"
-                                alt=""
-                                className="big-news-img"
-                            />
-                            
-                                <div className="big-news-explan">
-                                    <h1 className="big-news-explan-title">
-                                        注目のアニメ
-                                    </h1>
-                                    <p>
-                                        だいきに関する論文が発表され、世論が変化しています。新たな論文が登場したことで、以前の論文は影を潜めつつあります。
-                                    </p>
-                                </div>
-                            </div>
-                        </div>
-                    </section>
+                <section>
+                    <div className="sidevar">
+                        <nav className="nav-container">
+                            <Sidebar />
+                        </nav>
+                    </div>
+                </section>
+            </header>
 
+            <main>
+                <div className="display">
                     <section className="top-news section">
-                        <h2 className="news-tit section-tit">
-                            今日のトップニュース
-                        </h2>
+                        <a href="">
+                            <div className="top-image">
+                                <img src="./image copy 2.png" alt="" />
+                            </div>
+                        </a>
+                        <h2 className="news-tit section-tit">TRENDING NEWS</h2>
                         <div className="news-card-list">
                             {dummyData.map((data, index) => (
                                 <NewsCard
                                     key={index}
                                     title={data.title}
                                     uploadedAt={data.uploadedAt}
-                                    // views={data.views}
                                     url={data.url}
-                                    thumbnail={data.thumbnail} // 追加
+                                    thumbnail={data.thumbnail}
                                 />
                             ))}
                         </div>
