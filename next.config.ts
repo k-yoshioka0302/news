@@ -1,6 +1,7 @@
 import type { NextConfig } from 'next';
 
 const nextConfig: NextConfig = {
+    output: "standalone",
     images: {
         domains: [
             'www.animenewsnetwork.com',
@@ -15,5 +16,5 @@ const nextConfig: NextConfig = {
         ]
     }
 };
-
+  
 export default nextConfig;

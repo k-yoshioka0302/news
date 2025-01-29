@@ -1,0 +1,419 @@
+@charset "UTF-8";
+.header {
+  position: fixed;
+  height: 128px;
+  width: 100%;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  border-bottom: solid 1px #e0e0e0;
+  background: #fff;
+  -webkit-box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+          box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+  z-index: 100;
+}
+
+.header .header-headline {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: justify;
+      -ms-flex-pack: justify;
+          justify-content: space-between;
+  position: -webkit-sticky;
+  position: sticky;
+}
+
+.header .header-headline .headline-hum {
+  width: -webkit-max-content;
+  width: -moz-max-content;
+  width: max-content;
+  height: 64px;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+  gap: 4px;
+}
+
+.header .header-headline .headline-hum .line {
+  display: block;
+  width: 20px;
+  height: 2px;
+  border-radius: 5px;
+  background-color: #000;
+}
+
+.header .header-headline .headline-text {
+  font-weight: 700;
+  height: 64px;
+  line-height: 64px;
+  margin-left: 3rem;
+}
+
+.header .header-nav {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  list-style: none;
+  gap: 1rem;
+  padding-right: 1rem;
+}
+
+.header .header-nav .header-navlist .search-box {
+  height: 40px;
+  border-radius: 25px;
+  border: 1px solid #999999ac;
+  padding: 3px 1rem;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  -webkit-box-pack: left;
+      -ms-flex-pack: left;
+          justify-content: left;
+  gap: 8px;
+  width: 300px;
+}
+
+.header .header-nav .header-navlist .search-box label {
+  height: 18px;
+}
+
+.header .header-nav .header-navlist .search-box label svg {
+  width: 18px;
+  height: 18px;
+}
+
+.header .header-nav .header-navlist .search-box label svg circle,
+.header .header-nav .header-navlist .search-box label svg path {
+  stroke: #888;
+  stroke: #888;
+}
+
+.header .header-nav .header-navlist .search-box .search-input {
+  height: 18px;
+  border: 0;
+  outline: 0;
+}
+
+.header .header-nav .header-navlist .search-box .search-input:focus {
+  border: 0;
+  outline: 0;
+}
+
+.header .header-nav .header-navlist svg {
+  width: 20px;
+  height: 20px;
+}
+
+.header .header-nav .header-navlist svg circle,
+.header .header-nav .header-navlist svg path {
+  stroke: #888;
+  stroke: #888;
+}
+
+.header .sidevar {
+  position: fixed;
+  width: 100%;
+  border-top: solid 1px #e0e0e0;
+}
+
+.header .sidevar .nav-container {
+  max-width: 100%;
+  overflow-x: auto;
+  white-space: nowrap;
+  -webkit-overflow-scrolling: touch;
+  scrollbar-width: none;
+}
+
+.header .sidevar .nav-container::-webkit-scrollbar {
+  display: none;
+}
+
+.header .sidevar .sidebar-list {
+  display: -webkit-inline-box;
+  display: -ms-inline-flexbox;
+  display: inline-flex;
+  list-style: none;
+  padding: 0 2rem;
+  width: 100%;
+}
+
+.header .sidevar .sidebar-list .list-item {
+  font-weight: normal;
+  position: relative;
+  color: #000;
+  padding: 6px 0 8px 0;
+  text-decoration: none;
+  position: relative;
+  cursor: pointer;
+  width: 100%;
+  height: 100%;
+  margin: 1rem 0 0 0;
+  text-align: center;
+  min-width: 20%;
+}
+
+.header .sidevar .sidebar-list .list-item::after {
+  content: '';
+  position: absolute;
+  width: 0;
+  height: 2px;
+  bottom: 0;
+  left: 50%;
+  background-color: #007bff;
+  -webkit-transition: all 0.3s ease;
+  transition: all 0.3s ease;
+  -webkit-transform: translateX(-50%);
+          transform: translateX(-50%);
+}
+
+.header .sidevar .sidebar-list .list-item.active::after {
+  width: 54%;
+}
+
+.season-anime .top-image {
+  width: 100%;
+  height: 417px;
+}
+
+.season-anime .top-image img {
+  margin-top: 128px;
+  -o-object-fit: cover;
+     object-fit: cover;
+  -o-object-position: center;
+     object-position: center;
+  width: 100%;
+  height: 417px;
+}
+
+.season-anime .season-anime-top {
+  text-align: center;
+  font-size: 24px;
+  margin: 8em 56px 0px 56px;
+  padding: 25px 0 30px 0;
+  border-top: solid 2px #999999ac;
+}
+
+.season-anime .season-anime-button-left {
+  border: none;
+  left: 0;
+  position: absolute;
+  top: 38rem;
+  bottom: -4rem;
+  width: 5rem;
+  height: 28rem;
+  border: none;
+  outline: none;
+  color: transparent;
+  background-color: transparent;
+  z-index: 1;
+  background-image: -webkit-gradient(linear, left top, right top, from(#f0f0f0), to(rgba(255, 255, 255, 0)));
+  background-image: linear-gradient(90deg, #f0f0f0 0%, rgba(255, 255, 255, 0) 100%);
+}
+
+.season-anime .season-anime-button-left::after {
+  left: 30px;
+  content: url(https://online.aniplex.co.jp/on/demandware.static/Sites-ANX-Site/-/ja_JP/v1736917298250/images/icon-l-arrow-slick.svg);
+}
+
+.season-anime .season-anime-list {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  gap: 40px;
+  overflow-x: scroll;
+  /* 左右どちらにでもスクロールできるように変更 */
+  scrollbar-width: none;
+}
+
+.season-anime .season-anime-list .season-anime {
+  list-style: none;
+  margin: 0 0 40px 0;
+  -webkit-box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1), 0 4px 6px -2px rgba(0, 0, 0, 0.05);
+          box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1), 0 4px 6px -2px rgba(0, 0, 0, 0.05);
+}
+
+.season-anime .season-anime-list .season-anime .season-anime-url {
+  text-decoration: none;
+}
+
+.season-anime .season-anime-list .season-anime .season-anime-url .card-img {
+  width: 164px;
+  height: 243px;
+}
+
+.season-anime .season-anime-list .season-anime .season-anime-url .card-img img {
+  width: 164px;
+  height: 243px;
+  -o-object-fit: cover;
+     object-fit: cover;
+  -o-object-position: -32px 0;
+     object-position: -32px 0;
+}
+
+.season-anime .season-anime-list .season-anime .season-anime-title {
+  overflow: hidden;
+  color: #000;
+  padding: 10px 10px 0;
+  text-align: left;
+  padding-top: 10px;
+  background-color: #fff;
+  height: 73px;
+}
+
+.season-anime .season-anime-button-right {
+  border: none;
+  right: 0;
+  position: absolute;
+  top: 38rem;
+  bottom: -4rem;
+  width: 5rem;
+  height: 28rem;
+  border: none;
+  outline: none;
+  color: transparent;
+  background-color: transparent;
+  z-index: 1;
+  background-image: -webkit-gradient(linear, left top, right top, from(rgba(255, 255, 255, 0)), to(#f0f0f0));
+  background-image: linear-gradient(90deg, rgba(255, 255, 255, 0) 0%, #f0f0f0 100%);
+}
+
+.season-anime .season-anime-button-right::after {
+  right: 30px;
+  content: url(https://online.aniplex.co.jp/on/demandware.static/Sites-ANX-Site/-/ja_JP/v1736917298250/images/icon-r-arrow-slick.svg);
+}
+
+.top-news {
+  text-align: center;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  background-color: #f0f0f0;
+}
+
+.top-news .display {
+  width: 100%;
+  min-height: 100vh;
+  height: 100vh;
+}
+
+.top-news .display .news-tit {
+  font-size: 24px;
+  border-top: solid 2px #999999ac;
+  margin: 0 56px;
+  padding: 50px 0 30px 0;
+}
+
+.top-news .display .news-card-list {
+  margin: 0 auto;
+  background-color: #f0f0f0;
+}
+
+.top-news .display .news-card-list .news-card {
+  background-color: #fff;
+  display: inline-block;
+  width: 330px;
+  height: 400px;
+  border-radius: 6px;
+  border: 1px solid #e0e0e0;
+  overflow: hidden;
+  margin: 1rem;
+  -webkit-box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1), 0 4px 6px -2px rgba(0, 0, 0, 0.05);
+          box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1), 0 4px 6px -2px rgba(0, 0, 0, 0.05);
+}
+
+.top-news .display .news-card-list .news-card .card-thumb {
+  width: 100%;
+  height: 224px;
+}
+
+.top-news .display .news-card-list .news-card .card-thumb img {
+  width: 100%;
+  height: 100%;
+  -o-object-fit: cover;
+     object-fit: cover;
+}
+
+.top-news .display .news-card-list .news-card .card-text {
+  color: #000;
+  overflow: hidden;
+  height: 138px;
+  padding: 6px 1rem 0 1rem;
+  text-align: left;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+  -webkit-box-pack: start;
+      -ms-flex-pack: start;
+          justify-content: start;
+  text-decoration: none;
+  display: block;
+}
+
+.top-news .display .news-card-list .news-card .card-text:hover {
+  text-decoration: underline;
+}
+
+.top-news .display .news-card-list .news-card .card-text .card-headline {
+  font-size: 1.1rem;
+  font-weight: 600;
+  color: #222;
+}
+
+.top-news .display .news-card-list .news-card .card-text .card-desc {
+  padding-top: 0.5rem;
+  font-size: 0.8rem;
+  color: #555;
+}
+
+.top-news .display .news-card-list .news-card .card-footer {
+  border-top: solid 1px #e0e0e0;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: justify;
+      -ms-flex-pack: justify;
+          justify-content: space-between;
+  padding: 9px 0 0 8px;
+}
+
+.top-news .display .news-card-list .news-card .card-footer .card-timeline,
+.top-news .display .news-card-list .news-card .card-footer .card-views {
+  display: block;
+  text-align: center;
+  font-size: 0.7rem;
+  color: #999999ac;
+}
+
+.top-news .display .news-card-list .news-card .card-footer svg {
+  width: 0.7rem;
+  height: 0.7rem;
+}
+
+.top-news .display .news-card-list .news-card .card-footer svg path {
+  stroke: #999999ac;
+}
+/*# sourceMappingURL=styles.css.map */
