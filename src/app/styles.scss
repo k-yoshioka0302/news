@@ -6,6 +6,7 @@
     border-bottom: solid 1px #e0e0e0;
     background: #fff;
     box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    z-index: 100;
 
     .header-headline {
         display: flex;
@@ -113,7 +114,7 @@
         .sidebar-list {
             display: inline-flex;
             list-style: none;
-            padding: 0 1rem;
+            padding: 0 2rem;
             width: 100%;
             // display: flex;
             // overflow: scroll;
@@ -151,31 +152,140 @@
     }
 }
 
-.section {
-    .section-tit {
-        margin: 2rem 0;
+// .section {
+//     .section-tit {
+//         margin: 2rem 0;
+//     }
+// }
+.season-anime {
+    .top-image {
+        // overflow: hidden;
+        // position: relative;
+        width: 100%;
+        height: 417px;
+    }
+    .top-image img {
+        margin-top: 128px;
+        object-fit: cover;
+        object-position: center;
+        width: 100%;
+        height: 417px;
+    }
+    .season-anime-top {
+        text-align: center;
+        font-size: 24px;
+        margin: 8em 56px 0px 56px;
+        padding: 25px 0 30px 0;
+        border-top: solid 2px #999999ac;
+    }
+
+    .season-anime-button-left {
+        border: none;
+        left: 0;
+        position: absolute;
+        top: 38rem;
+        bottom: -4rem;
+        width: 5rem;
+        height: 28rem;
+        border: none;
+        outline: none;
+        color: transparent;
+        background-color: transparent;
+        z-index: 1;
+        background-image: linear-gradient(
+            90deg,
+            #f0f0f0 0%,
+            rgba(255, 255, 255, 0) 100%
+        );
+
+        &::after {
+            left: 30px;
+            content: url(https://online.aniplex.co.jp/on/demandware.static/Sites-ANX-Site/-/ja_JP/v1736917298250/images/icon-l-arrow-slick.svg);
+        }
+    }
+
+    .season-anime-list {
+        // justify-content: center;
+        display: flex;
+        gap: 40px;
+        overflow-x: scroll; /* 左右どちらにでもスクロールできるように変更 */
+        scrollbar-width: none;
+        // margin: 0 56px;
+        // border-bottom: solid 1px black;
+        .season-anime {
+            list-style: none;
+            margin: 0 0 40px 0;
+            box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1),
+                0 4px 6px -2px rgba(0, 0, 0, 0.05);
+
+            .season-anime-url {
+                text-decoration: none;
+
+                .card-img {
+                    width: 164px;
+                    height: 243px;
+    
+                    img {
+                        width: 164px;
+                        height: 243px;
+                        object-fit: cover;
+                        object-position: -32px 0;
+                    }
+                    
+                }
+            }
+
+            .season-anime-title {
+                overflow: hidden;
+                color: #000;
+                padding: 10px 10px 0;
+                text-align: left;
+                padding-top: 10px;
+                background-color: #fff;
+                height: 73px;
+            }
+        }
+    }
+    .season-anime-button-right {
+        border: none;
+        right: 0;
+        position: absolute;
+        top: 38rem;
+        bottom: -4rem;
+        width: 5rem;
+        height: 28rem;
+        border: none;
+        outline: none;
+        color: transparent;
+        background-color: transparent;
+        z-index: 1;
+        background-image: linear-gradient(
+            90deg,
+            rgba(255, 255, 255, 0) 0%,
+            #f0f0f0 100%
+        );
+        &::after {
+            right: 30px;
+            content: url(https://online.aniplex.co.jp/on/demandware.static/Sites-ANX-Site/-/ja_JP/v1736917298250/images/icon-r-arrow-slick.svg);
+        }
     }
 }
 
-.display {
-    .top-news {
-        text-align: center;
-
-        // .news-tit {
-
-        // }
-        .top-image {
-            overflow: hidden;
-            // position: relative;
-            width: 100%;
-            height: 417px;
+.top-news {
+    text-align: center;
+    justify-content: center;
+    background-color: #f0f0f0;
+    .display {
+        width: 100%;
+        min-height: 100vh;
+        height: 100vh;
+        .news-tit {
+            font-size: 24px;
+            border-top: solid 2px #999999ac;
+            margin: 0 56px;
+            padding: 50px 0 30px 0;
         }
-        .top-image img {
-            object-fit: cover;
-            object-position: center;
-            width: 100%;
-            height: 417px;
-        }
+
         .news-card-list {
             // width: 90%;
             margin: 0 auto;
@@ -190,6 +300,8 @@
                 border: 1px solid #e0e0e0;
                 overflow: hidden;
                 margin: 1rem;
+                box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1),
+                    0 4px 6px -2px rgba(0, 0, 0, 0.05);
 
                 .card-thumb {
                     width: 100%;

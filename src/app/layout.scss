@@ -11,15 +11,7 @@ body {
 }
 
 main {
-    display: flex;
+    // display: flex;
     width: 100%;
-    .display {
-        width: 100%;
-
-        background-color: #f0f0f0;
-        min-height: 100vh;
-        height: 100vh;
-        margin-top: 128px;
-        // overflow-y: scroll;
-    }
+    background-color: #f0f0f0;
 }

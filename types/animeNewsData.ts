@@ -15,3 +15,20 @@ export type AnimeNewsData = {
     // thumbnailHash: string; // サムネイル画像のハッシュ値
     url: string; // 記事のURL
 };
+
+export type SeasonAnimeDate = {
+    title_en: string;
+    images: {
+        facebook: {
+            og_image_url: string;
+        };
+        twitter: {
+            image_url: string;
+            mini_avatar_url?: string;
+            normal_avatar_url?: string;
+            bigger_avatar_url?: string;
+            original_avatar_url?: string;
+        };
+    };
+    official_site_url: string;
+}
