@@ -1,11 +1,14 @@
 'use client';
 import React from 'react';
-import { AnimeNewsData, SeasonAnimeDate } from '../../types/animeNewsData';
+import { AnimeNewsData, AnnictData,MergedAnime,MyAnimeList } from '../../types/animeNewsData';
 import Image from 'next/image';
 import { Bell, User, Search } from 'lucide-react';
 import './styles.scss';
 import { motion } from 'framer-motion';
 import { useState, useEffect } from 'react';
+
+import '../../pages/api/animeapi';
+
 
 //スクロールバー機能ロジック
 const Sidebar = () => {
@@ -32,22 +35,17 @@ const Sidebar = () => {
     return (
         <div className="sidebar-list">
             {navItems.map((item, index) => (
-                <motion.a
+                <motion.div
                     key={index}
-                    href="#"
-                    className={`list-item nav-item ${
-                        activeIndex === index ? 'active' : ''
-                    }`}
-                    //条件 ? 条件が真の場合の値 : 条件が偽の場合の値
-                    onClick={(e) => {
-                        e.preventDefault();
-                        setActiveIndex(index); // クリックされた項目のインデックスを設定
-                    }}
                     whileTap={{ scale: 0.95 }}
-                    // whileHover={{ scale: 1.05 }}
+                    onClick={(e : any) => {
+                        e.preventDefault();
+                        setActiveIndex(index);
+                    }}
+                    className={`list-item  ${activeIndex === index ? 'active' : ''}`}
                 >
-                    {item}
-                </motion.a>
+                    <a href="#" className='list-item-tagu'>{item}</a>
+                </motion.div>
             ))}
         </div>
     );
@@ -76,86 +74,60 @@ const NewsCard = ({ title, uploadedAt, thumbnail, url }: AnimeNewsData) => {
 };
 
 const SeasonAnimeCard = () => {
-    const [seasonAnimeData, setSeasonAnimeData] = useState<SeasonAnimeDate[]>([]);
-    // validHostsを削除しました
+    
+    const [animelist, setAnimelist] = useState<MergedAnime[]>([]);
+    // MergedAnimeは型指定で統合後の型指定したもの
+
     // APIからデータを取得するためのuseEffectを追加
     useEffect(() => {
         const fetchSeasonAnimeData = async () => {
             try {
-                const response = await fetch(
-                    'https://api.annict.com/v1/works?filter_season=2025-winter',
-                    {
-                        headers: {
-                            Authorization:
-                                'Bearer uAO0NzXFpEm2LIju5dOsAawTmF8WpAZMNnUhr5W2cvo'
-                        }
-                    }
-                );
-                if (!response.ok) {
-                    throw new Error('Network response was not ok');
+                const response = await fetch("/api/animeapi"); // URLが正しいか確認
+                if (!response.ok) { // レスポンスが正常でない場合のエラーハンドリング
+                    throw new Error(`HTTPエラー: ${response.status}`);
                 }
                 const data = await response.json();
-                console.log(data); // 取得したデータをコンソールに表示
-                // データの構造を確認
-                if (data && Array.isArray(data.works)) {
-                    setSeasonAnimeData(data.works); // 取得したデータを状態に設定
-                } else {
-                    console.error(
-                        'Expected data.works to be an array, but got:',
-                        data
-                    );
+
+                if (data.error) {
+                    throw new Error(data.error);
                 }
+
+                setAnimelist(data.data);
             } catch (error) {
-                console.error('Error fetching season anime data:', error);
+                console.error("統合データ取得エラー:", error);
             }
         };
 
         fetchSeasonAnimeData();
-    }, []); // 空の依存配列でコンポーネントのマウント時に実行
+    }, []);
 
-    // 新しい関数を追加
-    const renderSeasonAnimeCards = (data: SeasonAnimeDate[]) => {
-        // dataが配列であることを確認
-        if (!Array.isArray(data)) {
-            console.error('Expected data to be an array, but got:', data);
-            return null; // データが配列でない場合は何も表示しない
-        }
 
-        console.log(data)
-
-        return (
-            <ul className="season-anime-list">
-                {data.map((item, index) => (
-                    <li key={index} className="season-anime">
-                        <a
-                            href={item.official_site_url}
-                            className="season-anime-url"
-                        >
-                            <div className="card-img">
-                                <Image
-                                    src={
-                                        item.images.facebook.og_image_url ||
-                                        '/default_image_url.jpg'
-                                    }
-                                    alt={`${item.title_en}の画像`}
-                                    width={1082}
-                                    height={568}
-                                />
-                            </div>
-                            <p className="season-anime-title">
-                                {item.title_en}
-                            </p>
-                        </a>
-                    </li>
-                ))}
-            </ul>
-        );
-    };
-
-    return renderSeasonAnimeCards(seasonAnimeData); // データを表示
+    return (
+        <ul className="season-anime-list">
+            {animelist.map((anime) => (
+                <li key={anime.title} className="season-anime">
+                    <a
+                        href={anime.url}
+                        className="season-anime-url"
+                    >
+                        <div className="card-img">
+                            <Image
+                                src={anime.images}
+                                alt={`${anime.title}の画像`}
+                                width={1082}
+                                height={568}
+                            />
+                        </div>
+                        <p className="season-anime-title">
+                            {anime.title}
+                        </p>
+                    </a>
+                </li>
+            ))}
+        </ul>
+    );
 };
 
-const SeasonAnime = () => {};
 
 //api叩いてる
 export default function Home() {

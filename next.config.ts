@@ -3,18 +3,29 @@ import type { NextConfig } from 'next';
 const nextConfig: NextConfig = {
     output: "standalone",
     images: {
-        domains: [
-            'www.animenewsnetwork.com',
-            'api.annict.com',
-            'annict.com',
-        ],
         remotePatterns: [
             {
                 protocol: 'https',
-                hostname: '**'
+                hostname: 'www.animenewsnetwork.com',
+            },
+            {
+                protocol: 'https',
+                hostname: 'api.annict.com',
+            },
+            {
+                protocol: 'https',
+                hostname: 'annict.com',
+            },
+            {
+                protocol: 'https',
+                hostname: 'api.myanimelist.net',
+            },
+            {
+                protocol: 'https',
+                hostname: 'myanimelist.net',
             }
         ]
     }
 };
-  
+
 export default nextConfig;

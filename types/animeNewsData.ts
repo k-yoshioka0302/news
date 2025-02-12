@@ -16,19 +16,32 @@ export type AnimeNewsData = {
     url: string; // 記事のURL
 };
 
-export type SeasonAnimeDate = {
+export type AnnictData = {
     title_en: string;
-    images: {
-        facebook: {
-            og_image_url: string;
-        };
-        twitter: {
-            image_url: string;
-            mini_avatar_url?: string;
-            normal_avatar_url?: string;
-            bigger_avatar_url?: string;
-            original_avatar_url?: string;
-        };
-    };
+    // images: {
+    //     facebook: {
+    //         og_image_url: string;
+    //     };
+    //     twitter: {
+    //         image_url: string;
+    //         mini_avatar_url?: string;
+    //         normal_avatar_url?: string;
+    //         bigger_avatar_url?: string;
+    //         original_avatar_url?: string;
+    //     };
+    // };
     official_site_url: string;
+}
+
+export type MyAnimeList = {
+    title : string
+    main_picture : {
+        medium : string
+    }
+}
+
+export type MergedAnime = {
+    title : string
+    images : string
+    url : string
 }
