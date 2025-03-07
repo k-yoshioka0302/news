@@ -1,0 +1,37 @@
+
+.search-box {
+    height: 40px;
+    border-radius: 25px;
+    border: 1px solid #999999ac;
+    padding: 3px 1rem;
+    display: flex;
+    align-items: center;
+    justify-content: left;
+    gap: 8px;
+    width: 300px;
+
+    label {
+        height: 18px;
+
+        svg {
+            width: 18px;
+            height: 18px;
+
+            circle,
+            path {
+                stroke: #888;
+                stroke: #888;
+            }
+        }
+    }
+    .search-input {
+        height: 18px;
+        border: 0;
+        outline: 0;
+
+        &:focus {
+            border: 0;
+            outline: 0;
+        }
+    }
+}

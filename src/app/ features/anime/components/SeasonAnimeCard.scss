@@ -1,0 +1,42 @@
+.season-anime-list {
+    // justify-content: center;
+    display: flex;
+    gap: 40px;
+    overflow-x: scroll; /* 左右どちらにでもスクロールできるように変更 */
+    scrollbar-width: none;
+    // margin: 0 56px;
+    // border-bottom: solid 1px black;
+    .season-anime {
+        list-style: none;
+        margin: 0 0 40px 0;
+        box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1),
+            0 4px 6px -2px rgba(0, 0, 0, 0.05);
+
+        .season-anime-url {
+            text-decoration: none;
+
+            .card-img {
+                width: 167px;
+                height: 243px;
+
+                img {
+                    width: 167px;
+                    height: 243px;
+                    object-fit: cover;
+                    
+                }
+            }
+        }
+
+        .season-anime-title {
+            overflow: hidden;
+            font-size: 14px;
+            color: #000;
+            padding: 10px 10px 0;
+            text-align: left;
+            padding-top: 10px;
+            background-color: #fff;
+            height: 73px;
+        }
+    }
+}

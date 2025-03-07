@@ -1,0 +1,22 @@
+.top-news {
+    text-align: center;
+    justify-content: center;
+    background-color: #f0f0f0;
+    .display {
+        width: 100%;
+        min-height: 100vh;
+        height: 100vh;
+        .news-tit {
+            font-size: 24px;
+            border-top: solid 2px #999999ac;
+            margin: 0 56px;
+            padding: 50px 0 30px 0;
+        }
+
+        .news-card-list {
+            // width: 90%;
+            margin: 0 auto;
+            background-color: #f0f0f0;
+        }
+    }
+}

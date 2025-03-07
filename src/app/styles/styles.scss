@@ -224,14 +224,14 @@
                 text-decoration: none;
 
                 .card-img {
-                    width: 164px;
+                    width: 167px;
                     height: 243px;
 
                     img {
-                        width: 164px;
+                        width: 167px;
                         height: 243px;
                         object-fit: cover;
-                        object-position: -32px 0;
+                        
                     }
                 }
             }
@@ -314,6 +314,7 @@
                         width: 100%;
                         height: 100%;
                         object-fit: cover;
+                        object-position: top;
                     }
                 }
                 .card-text {

@@ -1,0 +1,98 @@
+.header {
+    position: fixed;
+    height: 128px;
+    width: 100%;
+    align-items: center;
+    border-bottom: solid 1px #e0e0e0;
+    background: #fff;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    z-index: 100;
+
+    .header-headline {
+        display: flex;
+        justify-content: space-between;
+        position: sticky;
+        .headline-hum {
+            width: max-content;
+            height: 64px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            flex-direction: column;
+            gap: 4px;
+
+            .line {
+                display: block;
+                width: 20px;
+                height: 2px;
+                border-radius: 5px;
+                background-color: #000;
+            }
+        }
+        .headline-text {
+            font-weight: 700;
+            // font-size: 1.2rem;
+            height: 64px;
+            line-height: 64px;
+            margin-left: 3rem;
+        }
+    }
+    .header-nav {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        list-style: none;
+        gap: 1rem;
+        padding-right: 1rem;
+
+        .header-navlist {
+            .search-box {
+                height: 40px;
+                border-radius: 25px;
+                border: 1px solid #999999ac;
+                padding: 3px 1rem;
+                display: flex;
+                align-items: center;
+                justify-content: left;
+                gap: 8px;
+                width: 300px;
+
+                label {
+                    height: 18px;
+
+                    svg {
+                        width: 18px;
+                        height: 18px;
+
+                        circle,
+                        path {
+                            stroke: #888;
+                            stroke: #888;
+                        }
+                    }
+                }
+                .search-input {
+                    height: 18px;
+                    border: 0;
+                    outline: 0;
+
+                    &:focus {
+                        border: 0;
+                        outline: 0;
+                    }
+                }
+            }
+
+            svg {
+                width: 20px;
+                height: 20px;
+
+                circle,
+                path {
+                    stroke: #888;
+                    stroke: #888;
+                }
+            }
+        }
+    }
+}

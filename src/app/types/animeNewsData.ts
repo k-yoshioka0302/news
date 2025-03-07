@@ -1,4 +1,4 @@
-export type AnimeNewsData = {
+export interface AnimeNewsData {
     title: string;
     // desc: string;
     // timeline: string;
@@ -14,10 +14,11 @@ export type AnimeNewsData = {
     thumbnail: string; // サムネイル画像のURL
     // thumbnailHash: string; // サムネイル画像のハッシュ値
     url: string; // 記事のURL
-};
+}
 
-export type AnnictData = {
-    title_en: string;
+export interface AnnictData {
+    works: {
+        title_en: string;
     // images: {
     //     facebook: {
     //         og_image_url: string;
@@ -31,17 +32,23 @@ export type AnnictData = {
     //     };
     // };
     official_site_url: string;
+    }[];
+    
 }
 
-export type MyAnimeList = {
-    title : string
-    main_picture : {
-        medium : string
-    }
+export interface MyAnimeList {
+    data: {
+        node: {
+            title: string;
+            main_picture: {
+                medium: string;
+            };
+        };
+    }[];
 }
 
-export type MergedAnime = {
-    title : string
-    images : string
-    url : string
+export interface MergedAnime {
+    title: string;
+    images: string;
+    url: string;
 }
