@@ -2,7 +2,7 @@
 import React, { useState, useEffect } from 'react';
 import Image from 'next/image';
 import { MergedAnime } from '@/app/types/animeNewsData';
-import './components/SeasonAnimeCard.scss';
+import './SeasonAnimeCard.scss';
 
 const SeasonAnimeCard = () => {
     const [animelist, setAnimelist] = useState<MergedAnime[]>([]);

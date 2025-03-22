@@ -1,3 +1,4 @@
+ //Annict,myanimelistを条件に応じてデータを統合させる処理
 import {
     AnnictData,
     MyAnimeList,

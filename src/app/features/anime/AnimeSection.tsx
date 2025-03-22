@@ -1,7 +1,7 @@
-
+'use client'
 import React from 'react';
-import SeasonAnimeCard from '../anime/components/SeasonAnimeCard';
-import './features/anime/components/AnimeSection.scss';
+import SeasonAnimeCard from './components/SeasonAnimeCard';
+import './AnimeSection.scss';
 
 const AnimeSection = () => {
     return (

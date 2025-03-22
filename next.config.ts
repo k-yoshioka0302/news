@@ -1,34 +1,39 @@
 import type { NextConfig } from 'next';
 
 const nextConfig: NextConfig = {
-    output: "standalone",
+    output: 'standalone',
     images: {
         remotePatterns: [
             {
                 protocol: 'https',
-                hostname: 'www.animenewsnetwork.com',
+                hostname: 'www.animenewsnetwork.com'
             },
             {
                 protocol: 'https',
-                hostname: 'api.annict.com',
+                hostname: 'api.annict.com'
             },
             {
                 protocol: 'https',
-                hostname: 'annict.com',
+                hostname: 'annict.com'
             },
             {
                 protocol: 'https',
-                hostname: 'api.myanimelist.net',
+                hostname: 'api.myanimelist.net'
             },
             {
                 protocol: 'https',
-                hostname: 'myanimelist.net',
+                hostname: 'myanimelist.net'
             },
             {
                 protocol: 'https',
                 hostname: 'cdn.myanimelist.net'
             }
         ]
+    }
+};
+const config: NextConfig = {
+    experimental: {
+        optimizePackageImports: ['@chakra-ui/react']
     }
 };
 

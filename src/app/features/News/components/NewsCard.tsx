@@ -4,7 +4,7 @@ import Image from 'next/image';
 import { AnimeNewsData } from '@/app/types/animeNewsData';
 import './NewsCard.scss';
 
-const NewsCard = ({ title, uploadedAt, thumbnail, url }: AnimeNewsData) => {
+export default function NewsCard({ title, uploadedAt, thumbnail, url }: AnimeNewsData) {
     return (
         <div className="news-card">
             <div className="card-thumb">
@@ -23,6 +23,4 @@ const NewsCard = ({ title, uploadedAt, thumbnail, url }: AnimeNewsData) => {
             </div>
         </div>
     );
-};
-
-export default NewsCard;
+}

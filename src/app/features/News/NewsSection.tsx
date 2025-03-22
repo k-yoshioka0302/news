@@ -1,8 +1,8 @@
 'use client';
 import React, { useState, useEffect } from 'react';
-import NewsCard from './components/NewsCard/NewsCard';
+import NewsCard from './components/NewsCard';
 import { AnimeNewsData } from '@/app/types/animeNewsData';
-import 'features/news/NewsSection.scss';
+import './NewsSection.scss';
 
 const NewsSection = () => {
     const [newsData, setNewsData] = useState<AnimeNewsData[]>([]);
