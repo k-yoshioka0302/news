@@ -17,7 +17,7 @@ export async function fetchData() {
     try {
         // MyAnimeList APIから2025年冬のアニメデータを取得（最大500件）
         const malResponse = await fetch(
-            'https://api.myanimelist.net/v2/anime/season/2025/winter?limit=500',
+            'https://api.myanimelist.net/v2/anime/season/2025/spring?limit=500',
             {
                 headers: {
                     'X-MAL-CLIENT-ID': 'e55c98155081d66f467a7d9a2c39f5ed' // 認証用のID
@@ -42,7 +42,7 @@ export async function fetchData() {
         while (hasMoreData) {
             // Annict APIにリクエスト（1ページ50件、ページ番号を指定）
             const annictResponse = await fetch(
-                `https://api.annict.com/v1/works?filter_season=2025-winter&per_page=50&page=${page}`,
+                `https://api.annict.com/v1/works?filter_season=2025-spring&per_page=50&page=${page}`,
                 {
                     headers: {
                         Authorization: 'Bearer uAO0NzXFpEm2LIju5dOsAawTmF8WpAZMNnUhr5W2cvo' // 認証用のトークン
