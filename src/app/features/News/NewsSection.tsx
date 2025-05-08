@@ -11,14 +11,14 @@ const NewsSection = () => {
         try {
             const fetchData = async () => {
                 const response = await fetch(
-                    'https://anime-ashy-ten.vercel.app/news/ann/recent-feeds'
+                    'https://animenews-api.vercel.app/news/ann/recent-feeds'
                 );
                 const data: AnimeNewsData[] = await response.json();
                 setNewsData(data);
             };
             fetchData();
-        } catch (e) {
-            console.error(e);
+        } catch (error) {
+            console.error(error);
         }
     }, []);
 

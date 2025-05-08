@@ -1,6 +1,9 @@
 'use client';
 import React from 'react';
 import { FcGoogle } from 'react-icons/fc';
+import { useState, useTransition } from 'react';
+import { FormError } from '../../components/auth/form-error';
+import { FormSuccess } from '../../components/auth/from-success';
 import { BsTwitterX } from 'react-icons/bs';
 import {
     Button,
@@ -15,23 +18,48 @@ import { PasswordInput } from '@/components/ui/password-input';
 import { useForm } from 'react-hook-form';
 import { zodResolver } from '@hookform/resolvers/zod';
 import LoginButton from '@/app/components/auth/login-button';
-import { useState } from 'react';
 import * as z from 'zod';
 import { RegisterSchema } from '@/app/utils/schemas';
+import { RegisterServer } from '@/app/actions/register';
 
 const LoginForm = () => {
-    const [value, setValue] = useState('');
     const {
         register,
         formState: { errors },
         handleSubmit
     } = useForm({
-        mode: 'onChange', //どのタイミングでエラーを出すかを決める
+        mode: 'onChange', //どのタイミングでエラーを出すかを決める.
         resolver: zodResolver(RegisterSchema) // ←ここでZodとつなげる！
     });
+    // エラーメッセージの表示/非表示を制御するstate
+    const [error, setError] = useState<string | undefined>('');
+    // 成功メッセージの表示/非表示を制御するstate 
+    const [success, setSuccess] = useState<string | undefined>('');
+    // 非同期処理の実行中かどうかを管理するstate
+    const [isPending, startTransition] = useTransition();
 
-    const onSubmit = (values: z.infer<typeof RegisterSchema>) => {
-        console.log(values);
+    // const onSubmit = (values: z.infer<typeof RegisterSchema>) => {
+    //     console.log(values);
+    // };//typeof RegisterSchema	スキーマ自体の型
+    // //z.inferスキーマに沿った**型（＝正解の形）**を自動で作ってね
+    // //onSubmit 関数は、引数 values を受け取るんだけど、その形は RegisterSchema に合ってなきゃダメだよ
+
+    const onSubmit = async (values: z.infer<typeof RegisterSchema>) => {
+        setError('');
+        setSuccess('');
+        // エラー・成功メッセージを一旦リセット（空にする）
+        startTransition(async () => {
+            try {
+                const response = await RegisterServer(values);
+                if (response.error) {
+                    setError(response.error);// エラーメッセージをセット
+                } else {
+                    // setSuccess(response.success)
+                }
+            } catch (error) {
+                setError('エラーが発生しました');
+            }
+        });
     };
 
     return (
@@ -62,16 +90,14 @@ const LoginForm = () => {
 
                             <Field.ErrorText>
                                 {errors.email?.message}
+                                {/* errors.emailがnullまたはundefinedの場合でも、エラーを発生させずにundefinedを返します */}
                             </Field.ErrorText>
                         </Field.Root>
 
                         <Field.Root invalid={!!errors.password}>
                             <Field.Label>パスワード</Field.Label>
                             <PasswordInput
-                                value={value}
-                                {...register('password', {
-                                    onChange: (e) => setValue(e.target.value)
-                                })}
+                                {...register('password')}
                                 placeholder=" パスワード"
                                 size="lg"
                                 variant="outline"
@@ -84,7 +110,11 @@ const LoginForm = () => {
                                 {errors.password?.message}
                             </Field.ErrorText>
                         </Field.Root>
-                        <Button type="submit" mb={3}>
+
+                        <FormError message={error} />
+                        <FormSuccess message={success} />
+                        {/* 処理中はボタンを無効にして再送信を防ぐ */}
+                        <Button type="submit" mb={3} disabled={isPending}>
                             アカウント登録
                         </Button>
                     </Stack>
