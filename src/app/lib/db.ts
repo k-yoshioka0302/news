@@ -2,10 +2,10 @@ const mysql = require('mysql2/promise');
 
 const pool = mysql.createPool({
     host: 'localhost',
-    user: 'yoshiokakazuteru', // 適切なユーザー名
+    user: 'root', // 適切なユーザー名
     password: 'Jy52968451', // 適切なパスワード
     database: 'registerdatabase' ,// 適切なデータベース名
-    port : 3000,
+    port : 3306
 });
 
 //データベース接続テスト
@@ -20,7 +20,6 @@ async function testConnection() {
 }
 
 testConnection();
-
 
 export default pool;
 

@@ -7,6 +7,7 @@ import './NewsSection.scss';
 const NewsSection = () => {
     const [newsData, setNewsData] = useState<AnimeNewsData[]>([]);
 
+
     useEffect(() => {
         try {
             const fetchData = async () => {
@@ -21,6 +22,7 @@ const NewsSection = () => {
             console.error(error);
         }
     }, []);
+
 
     return (
         <section className="top-news">

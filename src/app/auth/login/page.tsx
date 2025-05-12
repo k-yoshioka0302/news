@@ -25,7 +25,7 @@ import { RegisterServer } from '@/app/actions/register';
 const LoginForm = () => {
     const {
         register,
-        formState: { errors },
+        formState: { errors  },
         handleSubmit
     } = useForm({
         mode: 'onChange', //どのタイミングでエラーを出すかを決める.
@@ -33,16 +33,10 @@ const LoginForm = () => {
     });
     // エラーメッセージの表示/非表示を制御するstate
     const [error, setError] = useState<string | undefined>('');
-    // 成功メッセージの表示/非表示を制御するstate 
+    // 成功メッセージの表示/非表示を制御するstate
     const [success, setSuccess] = useState<string | undefined>('');
     // 非同期処理の実行中かどうかを管理するstate
     const [isPending, startTransition] = useTransition();
-
-    // const onSubmit = (values: z.infer<typeof RegisterSchema>) => {
-    //     console.log(values);
-    // };//typeof RegisterSchema	スキーマ自体の型
-    // //z.inferスキーマに沿った**型（＝正解の形）**を自動で作ってね
-    // //onSubmit 関数は、引数 values を受け取るんだけど、その形は RegisterSchema に合ってなきゃダメだよ
 
     const onSubmit = async (values: z.infer<typeof RegisterSchema>) => {
         setError('');
@@ -52,9 +46,9 @@ const LoginForm = () => {
             try {
                 const response = await RegisterServer(values);
                 if (response.error) {
-                    setError(response.error);// エラーメッセージをセット
+                    setError(response.error); // エラーメッセージをセット
                 } else {
-                    // setSuccess(response.success)
+                    setSuccess(response.success)
                 }
             } catch (error) {
                 setError('エラーが発生しました');
@@ -96,7 +90,7 @@ const LoginForm = () => {
 
                         <Field.Root invalid={!!errors.password}>
                             <Field.Label>パスワード</Field.Label>
-                            <PasswordInput
+                            <Input
                                 {...register('password')}
                                 placeholder=" パスワード"
                                 size="lg"
