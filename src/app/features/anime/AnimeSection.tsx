@@ -11,7 +11,7 @@ const AnimeSection = () => {
                     <img src="image copy 2.png" alt="トップアニメ画像" />
                 </div>
             </a>
-            <h2 className="season-anime-top">THIS SEASON'S ANIME</h2>
+            <h2 className="season-anime-top">新作・今期のアニメ</h2>
             <button className="season-anime-button-left"></button>
             <SeasonAnimeCard />
             <button className="season-anime-button-right"></button>

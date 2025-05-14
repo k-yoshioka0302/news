@@ -25,7 +25,7 @@ import { RegisterServer } from '@/app/actions/register';
 const LoginForm = () => {
     const {
         register,
-        formState: { errors  },
+        formState: { errors },
         handleSubmit
     } = useForm({
         mode: 'onChange', //どのタイミングでエラーを出すかを決める.
@@ -48,7 +48,7 @@ const LoginForm = () => {
                 if (response.error) {
                     setError(response.error); // エラーメッセージをセット
                 } else {
-                    setSuccess(response.success)
+                    setSuccess(response.success);
                 }
             } catch (error) {
                 setError('エラーが発生しました');
@@ -134,6 +134,9 @@ const LoginForm = () => {
                         <BsTwitterX />
                     </Button>
                 </HStack>
+                {/* <a href="#">
+                    <button>アカウント登録済みの人</button>
+                </a> */}
             </Flex>
         </Flex>
     );

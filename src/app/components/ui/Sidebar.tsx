@@ -14,12 +14,11 @@ const Sidebar = () => {
 
     //index 0〜9　、itemは''
     const navItems = [
-        'TRENDING',
-        'LATEST NEWS',
-        'TV ANIME',
-        'MANGA',
-        'MOVIE',
-        'VOICE ACTOR',
+        'トレンド',
+        'アニメ',
+        'マンガ',
+        '映画',
+        '声優',
         'VTuber',
         'その他2',
         'その他3'

@@ -27,7 +27,7 @@ const NewsSection = () => {
     return (
         <section className="top-news">
             <div className="display">
-                <h3 className="news-tit section-tit">TRENDING NEWS</h3>
+                <h3 className="news-tit section-tit">トレンドニュース</h3>
                 <div className="news-card-list">
                     {newsData.map((data, index) => (
                         <NewsCard

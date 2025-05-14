@@ -11,16 +11,16 @@ export const RegisterServer = async (
     values: z.infer<typeof RegisterSchema>
 ) => {
     // Zodスキーマを使用して入力値のバリデーションを実行
+    //safeParse は、Zod というバリデーションライブラリのメソッド 安全検証
     const validatedFields = RegisterSchema.safeParse(values);
     console.log(validatedFields.data); // デバッグ用：検証済みデータのログ出力
 
-    // バリデーションが失敗した場合
+    // バリデーションが失敗した場合　!〜でない場合
     if (!validatedFields.success) {
         return { error: '入力内容を修正してください' };
     }
 
     const { email, password } = validatedFields.data;
-
     // パスワードをハッシュ化
     const hashedPassword = await bcrypt.hash(password, 10);
 
@@ -29,7 +29,7 @@ export const RegisterServer = async (
     try {
         //データベース接続
         connection = await pool.getConnection();
-        // メールアドレスの重複をチェック
+        // メールアドレスの重複をチェック mysql2ライブラリのexecute関数です
         const [existingUsers] = await connection.execute(
             'SELECT * FROM users WHERE email = ?',
             [email]
@@ -46,8 +46,8 @@ export const RegisterServer = async (
         );
 
         return { success: 'アカウントを登録しました' }
-    } catch (e) {
-        console.error('ユーザー登録エラー:', e);
+    } catch (error) {
+        console.error('ユーザー登録エラー:', error);
         return { error: 'エラーが発生しました' }
     } finally {
         if (connection) {
